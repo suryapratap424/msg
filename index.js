@@ -15,4 +15,4 @@ app.get('/',(req,res)=>{
     file = 'please select a theme'
     res.send(file)
 })
-app.listen(80, () => console.log("running"));
+app.listen(process.env.PORT||80, () => console.log("running"));
