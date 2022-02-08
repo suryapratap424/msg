@@ -67,7 +67,17 @@
     alert('Touch on Black Screen To see Magic Happen!!')
     fonts = ['cursive','courier','Arial','monospace','candara','fantasy',]
     names = ['{name}', {theme}]
-    document.getElementById('container').click()
+    names.forEach(element => {
+        span = document.createElement('span')
+        span.classList.add('goo')
+        y = Math.floor(Math.random() * screen.height)
+        x = Math.floor(Math.random() * screen.width)
+        console.log(x,y)
+        span.style.top = y + 'px';
+        span.style.left = x + 'px';
+        span.innerHTML = element
+        document.getElementById('container').appendChild(span)
+    });
     document.getElementById('container').addEventListener('click', (e) => {
         span = document.createElement('span')
         span.classList.add('goo')
