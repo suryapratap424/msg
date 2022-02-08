@@ -66,24 +66,24 @@
 </head>
 
 <body>
-    <div id="msg">Click On Screen to See More</div>
+    <div id="msg" class="goo">Click On Screen to See More</div>
     <div id="container"></div>
     <a href="/" id="link" style="display: none;">Create A Link For Your Loved Ones 👈👈</a>
 </body>
 <script>
     fonts = ['cursive','courier','Arial','monospace','candara','fantasy',]
     names = ['{name}', {theme}]
-    names.forEach(element => {
-        span = document.createElement('span')
-        span.classList.add('goo')
-        y = Math.floor(Math.random() * screen.height)
-        x = Math.floor(Math.random() * screen.width*0.8)
-        console.log(x,y)
-        span.style.top = y + 'px';
-        span.style.left = x + 'px';
-        span.innerHTML = element
-        document.getElementById('container').appendChild(span)
-    });
+    // names.forEach(element => {
+    //     span = document.createElement('span')
+    //     span.classList.add('goo')
+    //     y = Math.floor(Math.random() * screen.height)
+    //     x = Math.floor(Math.random() * screen.width*0.8)
+    //     console.log(x,y)
+    //     span.style.top = y + 'px';
+    //     span.style.left = x + 'px';
+    //     span.innerHTML = element
+    //     document.getElementById('container').appendChild(span)
+    // });
     document.getElementById('container').addEventListener('click', (e) => {
         document.getElementById('msg').style.display='none'
         span = document.createElement('span')
