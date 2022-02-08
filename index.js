@@ -5,8 +5,9 @@ app.use(express.static("public"));
 app.get("/page", (req, res) => {
   file = fs.readFileSync("./names.html", "utf-8");
   file = file.replace("{name}", req.query.name);
+  file = file.replace("{head}",req.query.theme);
   if (req.query.theme == "love")
-    file = file.replace("{theme}", "'I ❤️ You', '💕', '💓', '🧸'");
+    file = file.replace("{theme}", "'I ❤️ You', '💕', '💓', '🧸','🍫','🌹'");
   else if (req.query.theme == "birthday")
     file = file.replace(
       "{theme}",
