@@ -7,13 +7,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome</title>
     <style>
-        *{
+        * {
             margin: 0%;
             padding: 0%;
             box-sizing: border-box;
+            text-align: center;
+        }
+        body{
+            background-color: black;
+            color: white;
         }
         #themes {
             display: flex;
+            margin-top: 1rem;
         }
 
         .theme {
@@ -26,6 +32,7 @@
             font-size: larger;
             font-family: cursive;
             transition: 500ms;
+            border: 2px double white;
         }
 
         .theme:nth-child(odd):hover {
@@ -42,9 +49,30 @@
 
         input[type="radio"]:checked+label {
             font-weight: bold;
-            background-color: pink;
+            background-color: palevioletred;
+            color: black;
         }
 
+        #namebox {
+            text-align: center;
+            margin: 2rem;
+        }
+        #namebox>label{
+            font-size: larger;
+        }
+        #name {
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+        }
+
+        #submit {
+            padding: 1rem;
+        }
+        #link{
+            color: black;
+            padding: 1rem;
+            background-color: pink;
+        }
         img {
             width: 100%;
         }
@@ -71,19 +99,29 @@
                 <span>BIRTHDAY</span>
             </label>
         </div>
-        <label for="name">Name of Reciever</label>
-        <input type="text" id="name">
+        <div id="namebox">
+            <label for="name">Name of Reciever</label><br>
+            <input type="text" id="name">
+        </div>
         <button id="submit">Get A Link!</button>
-        <a href="" id="link"></a>
+        <a href="" id="link" style="display: none;"></a>
     </div>
     <!-- http://message-for.herokuapp.com -->
     <script>
-        document.getElementById('submit').addEventListener('click',()=>{
-            let name= document.getElementById('name').value
-            let theme = document.querySelector('input[type="radio"]:checked').value
-            let a= document.getElementById('link')
-            a.href=`/page?name=${name}&&theme=${theme}`;
-            a.innerHTML = 'Click Here'
+        document.getElementById('submit').addEventListener('click', () => {
+            let name = document.getElementById('name').value
+            let theme = document.querySelector('input[type="radio"]:checked')
+            if (theme == null) {
+                alert('Please Select a Theme')
+            } else if (name == '') {
+                alert('Please Enater name')
+            } else {
+                let a = document.getElementById('link')
+                a.style.display='inline-block'
+                theme = theme.value
+                a.href = `/page?name=${name}&&theme=${theme}`;
+                a.innerHTML = 'Click Here'
+            }
         })
     </script>
 </body>
