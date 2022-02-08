@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            color: white;
+            margin: 0%;
+            padding: 0%;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: black;
+            overflow: hidden;
+        }
+
+        #container {
+            width: 100vw;
+            height: 100vh;
+            font-family: 'Kruti Dev';
+            border: 2px solid white;
+            overflow: hidden;
+        }
+
+        .goo {
+            animation-name: scale;
+            animation-duration: 3s;
+            animation-iteration-count: infinite;
+            position: absolute;
+            user-select: none;
+        }
+        @keyframes scale {
+            0% {
+                font-size: 0rem;
+            }
+
+            50% {
+                font-size: 3rem;
+            }
+
+            100% {
+                font-size: 0rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container"></div>
+    <a href="./crate.html">Create For Your Loved Ones</a>
+</body>
+<script>
+    fonts = ['cursive','courier','Arial','monospace','candara','fantasy',]
+    names = ['{name}', {theme}]
+    document.getElementById('container').addEventListener('click', (e) => {
+        span = document.createElement('span')
+        span.classList.add('goo')
+        span.style.top = e.clientY + 'px';
+        span.style.left = e.clientX + 'px';
+        span.style.fontFamily = fonts[Math.floor(Math.random() * fonts.length)]
+        let x = Math.floor(Math.random() * names.length)
+        span.innerHTML = names[x]
+        document.getElementById('container').appendChild(span)
+    })
+</script>
+
+</html>
