@@ -61,11 +61,13 @@
 
 <body>
     <div id="container"></div>
-    <a href="/">Create A Link For Your Loved Ones 👈👈</a>
+    <a href="/" id="link" style="display: none;">Create A Link For Your Loved Ones 👈👈</a>
 </body>
 <script>
+    alert('Touch on Black Screen To see Magic Happen!!')
     fonts = ['cursive','courier','Arial','monospace','candara','fantasy',]
     names = ['{name}', {theme}]
+    document.getElementById('container').click()
     document.getElementById('container').addEventListener('click', (e) => {
         span = document.createElement('span')
         span.classList.add('goo')
@@ -76,6 +78,9 @@
         span.innerHTML = names[x]
         document.getElementById('container').appendChild(span)
     })
+    setTimeout(() => {
+        document.getElementById('link').style.display='block'
+    }, 10000);
 </script>
 
 </html>
