@@ -13,7 +13,8 @@
             box-sizing: border-box;
             text-align: center;
         }
-        body{
+        #container{
+            height: 100vh;
             background-color: black;
             color: white;
         }
@@ -54,14 +55,29 @@
         }
 
         #namebox {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            justify-items: center;
+            width: 50%;
             text-align: center;
-            margin: 2rem;
+            margin: 2rem auto;
             margin-bottom: 1rem;
+        }
+        @media screen and (max-width:400px){
+            #namebox{
+                width: 100%;
+            }
+            #namebox>label{
+                font-size: medium!important;
+            }
         }
         #namebox>label{
             font-size: larger;
+            margin: 1rem;
         }
         #name {
+            grid-area: 1/1/2/3;
             padding: 0.5rem 1rem;
             border-radius: 5px;
         }
@@ -81,7 +97,7 @@
 </head>
 
 <body>
-    <div>
+    <div id="container">
         <h1>Select a Theme</h1>
         <div id="themes">
             <input type="radio" name="type" id="love" value="love">
@@ -101,17 +117,28 @@
             </label>
         </div>
         <div id="namebox">
-            <label for="name">Name of Reciever</label><br>
-            <input type="text" id="name">
+            <!-- <label for="name">Name of Reciever</label> -->
+            <input type="text" id="name" placeholder="Name of Reciever">
+            <label for="color">Background-color:</label>
+            <input type="color" name="color" id="color">
+            <label for="color">Text-color:</label>
+            <input type="color" name="tcolor" id="tcolor" value="#ffffff">
         </div>
         <button id="submit">Get A Link!</button>
         <a href="" id="link" style="display: none;"></a>
     </div>
-    <!-- http://message-for.herokuapp.com -->
     <script>
+        document.getElementById('color').addEventListener('input',()=>{
+            document.getElementById('container').style.backgroundColor=document.getElementById('color').value
+        })
+        document.getElementById('tcolor').addEventListener('input',()=>{
+            document.getElementById('container').style.color=document.getElementById('tcolor').value
+        })
         document.getElementById('submit').addEventListener('click', () => {
             let name = document.getElementById('name').value
             let theme = document.querySelector('input[type="radio"]:checked')
+            let bg = document.getElementById('color').value.slice(1)
+            let tc = document.getElementById('tcolor').value.slice(1)
             if (theme == null) {
                 alert('Please Select a Theme')
             } else if (name == '') {
@@ -120,7 +147,7 @@
                 let a = document.getElementById('link')
                 a.style.display='inline-block'
                 theme = theme.value
-                a.href = `/page?name=${name}&&theme=${theme}`;
+                a.href = `/page?name=${name}&theme=${theme}&bg=${bg}&text=${tc}`;
                 a.innerHTML = 'Click Here'
             }
         })
