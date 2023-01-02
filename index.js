@@ -12,10 +12,7 @@ app.get("/page", (req, res) => {
   if (req.query.theme == "love")
     file = file.replace("{theme}", "'I ❤️ You', '💕', '💓', '🧸','🍫','🌹'");
   else if (req.query.theme == "birthday")
-    file = file.replace(
-      "{theme}",
-      "'Happy BirthDay', '🎂', '🍰','🍥','🍬','🍫'"
-    );
+    file = file.replace("{theme}","'Happy BirthDay', '🎂', '🍰','🍥','🍬','🍫','🍔'");
   else if (req.query.theme == "sorry")
     file = file.replace("{theme}", "'Sorry', '🙃', '🥺','😭','😓','😥'");
   else file = "please select a theme";
