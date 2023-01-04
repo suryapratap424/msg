@@ -76,17 +76,19 @@
     const urlParams = new URLSearchParams(queryString);
     //set theme
     if (urlParams.get('theme') == "love")
-        theme = ['I ❤️ You', '💕', '💓', '🧸', '🍫', '🌹']
+    theme = ['I ❤️ You', '💕', '💓', '🧸', '🍫', '🌹']
     else if (urlParams.get('theme') == "birthday")
-        theme = ['Happy BirthDay', '🎂', '🍰', '🍥', '🍬', '🍫', '🍔']
+    theme = ['Happy BirthDay', '🎂', '🍰', '🍥', '🍬', '🍫', '🍔']
     else if (urlParams.get('theme') == "sorry")
-        theme = ['Sorry', '🙃', '🥺', '😭', '😓', '😥'];
+    theme = ['Sorry', '🙃', '🥺', '😭', '😓', '😥'];
     fonts = ['cursive', 'courier', 'Arial', 'monospace', 'candara', 'fantasy',]
     names = [urlParams.get('name'), ...theme]
     //set backgroud
     document.getElementById('container').style.backgroundColor = '#'+urlParams.get('bg')
     //set text color
     document.getElementById('container').style.color = '#'+urlParams.get('text')
+    //set title
+    document.title=theme[0]+theme[1]
     //handling click
     document.getElementById('container').addEventListener('click', (e) => {
         document.getElementById('msg').style.display = 'none'
