@@ -8,14 +8,12 @@
     <title>{head}</title>
     <style>
         * {
-            color: 'tc';
             margin: 0%;
             padding: 0%;
             box-sizing: border-box;
         }
 
         body {
-            background-color: 'bg';
             overflow: hidden;
         }
 
@@ -34,7 +32,8 @@
             position: absolute;
             user-select: none;
         }
-        a{
+
+        a {
             background-color: palevioletred;
             color: rgb(0, 0, 0);
             padding: 1rem;
@@ -43,12 +42,14 @@
             bottom: 0%;
             left: 0%;
         }
-        #msg{
+
+        #msg {
             position: absolute;
             top: 0%;
             left: 0%;
             font-size: xx-large;
         }
+
         @keyframes scale {
             0% {
                 font-size: 0rem;
@@ -71,21 +72,24 @@
     <a href="/" id="link" style="display: none;">Create A Link For Your Loved Ones 👈👈</a>
 </body>
 <script>
-    fonts = ['cursive','courier','Arial','monospace','candara','fantasy',]
-    names = ['{name}', {theme}]
-    // names.forEach(element => {
-    //     span = document.createElement('span')
-    //     span.classList.add('goo')
-    //     y = Math.floor(Math.random() * screen.height)
-    //     x = Math.floor(Math.random() * screen.width*0.8)
-    //     console.log(x,y)
-    //     span.style.top = y + 'px';
-    //     span.style.left = x + 'px';
-    //     span.innerHTML = element
-    //     document.getElementById('container').appendChild(span)
-    // });
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    //set theme
+    if (urlParams.get('theme') == "love")
+        theme = ['I ❤️ You', '💕', '💓', '🧸', '🍫', '🌹']
+    else if (urlParams.get('theme') == "birthday")
+        theme = ['Happy BirthDay', '🎂', '🍰', '🍥', '🍬', '🍫', '🍔']
+    else if (urlParams.get('theme') == "sorry")
+        theme = ['Sorry', '🙃', '🥺', '😭', '😓', '😥'];
+    fonts = ['cursive', 'courier', 'Arial', 'monospace', 'candara', 'fantasy',]
+    names = [urlParams.get('name'), ...theme]
+    //set backgroud
+    document.getElementById('container').style.backgroundColor = '#'+urlParams.get('bg')
+    //set text color
+    document.getElementById('container').style.color = '#'+urlParams.get('text')
+    //handling click
     document.getElementById('container').addEventListener('click', (e) => {
-        document.getElementById('msg').style.display='none'
+        document.getElementById('msg').style.display = 'none'
         span = document.createElement('span')
         span.classList.add('goo')
         span.style.top = e.clientY + 'px';
@@ -96,7 +100,7 @@
         document.getElementById('container').appendChild(span)
     })
     setTimeout(() => {
-        document.getElementById('link').style.display='block'
+        document.getElementById('link').style.display = 'block'
     }, 10000);
 </script>
 

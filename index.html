@@ -102,17 +102,17 @@
         <div id="themes">
             <input type="radio" name="type" id="love" value="love">
             <label for="love" class="theme">
-                <img src="./love.png" alt="love">
+                <img src="./public/love.png" alt="love">
                 <span>LOVE</span>
             </label>
             <input type="radio" name="type" id="sorry" value="sorry">
             <label for="sorry" class="theme">
                 <span>SORRY</span>
-                <img src="./sorry.png" alt="sorry">
+                <img src="./public/sorry.png" alt="sorry">
             </label>
             <input type="radio" name="type" id="birthday" value="birthday">
             <label for="birthday" class="theme">
-                <img src="./birthday.png" alt="birthday">
+                <img src="./public/birthday.png" alt="birthday">
                 <span>BIRTHDAY</span>
             </label>
         </div>
@@ -147,7 +147,7 @@
                 let a = document.getElementById('link')
                 a.style.display='inline-block'
                 theme = theme.value
-                a.href = `/page?name=${name}&theme=${theme}&bg=${bg}&text=${tc}`;
+                a.href = `/page.html?name=${name}&theme=${theme}&bg=${bg}&text=${tc}`;
                 a.innerHTML = 'Click Here'
             }
         })
